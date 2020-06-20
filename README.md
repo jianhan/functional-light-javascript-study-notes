@@ -2,6 +2,48 @@
 
 ## Chapter 2: The Nature Of Functions
 
+### Function Environment
+
+**Function Environment**
+
+1. Every time a function invoked (applied to zero or more arguments), like a dictionary with key value pair, the key is parameter, value is argument.
+
+2. When javascript bind a value to a name, it makes a copy of the value and place it into environment.
+
+3. When a value–any value–is passed as an argument to a function, the value bound in the function’s environment must be identical to the original.
+
+~~~javascript
+const double = x => x * 2 // environment is {x:2, ...}, ... represent other environment such as global one
+~~~
+
+#### Variable Types
+**Value Types** such as string, boolean, number, etc..
+**Reference Types** such as array, object and function
+
+
+#### Call By Value
+When a function is invoked, javascript evaluate the expression(s) (all values are expressions) and apply the result of it as value to function.
+This when the argument passed in is value type.
+~~~javascript
+(function double(x) { return x * 2 })(1 + 1) // 1 + 1 was evaluated first as value, then passed into function double as argument of value 2
+~~~
+
+#### Call By Sharing
+A specialization of call by value, instead of evaluate the expression to get the value, it actually make a copy of the reference and pass it into function. Since
+two references point to the same value, so they are identical. For instance, the way variable assignment works are exactly the same
+
+~~~javascript
+const x = [1, 2, 3]
+const y = x // true
+
+// how y is assigned is the same as
+function (value) {
+    return (function (copy) { // inner function always return true
+        return copy === value
+    })(value)
+}
+~~~
+
 ### Mathematical Functions
 
 * A function always takes input(s), and always gives an output
@@ -63,45 +105,28 @@ A function decorator is a higher-order function that takes one function as an ar
 around, like a live link.
 * This behavior is what makes functional programming powerful, also is the foundation for how higher order function works.
 
+#### Naming Function (this is subjective, not a concrete rule)
+Anonymous function are convenient to write, but do not trade easy to write for hard to read, never a good trade, when using anonymous function
+think twice. Here are some of the reasons why named function can be payoff in long run:
+1. Debugging: when inspecting stack trace, if "anonymous function" are all over the place, it can be hard.
+2. Recursive: anonymous function can not do recursion
+3. Named function normally more self-explanatory, more explicit
+4. When struggling to naming a function, it could be that the purpose of the function is not clear, some refactoring and re-designing is needed. 
 
-### Function Environment
+#### This keyword
+Avoid using this keyword in FP. "this" provide a object context for functions to run.
 
-**Function Environment**
-
-1. Every time a function invoked (applied to zero or more arguments), like a dictionary with key value pair, the key is parameter, value is argument.
-
-2. When javascript bind a value to a name, it makes a copy of the value and place it into environment.
-
-3. When a value–any value–is passed as an argument to a function, the value bound in the function’s environment must be identical to the original.
-
+this is an implicit parameter input for your function.
 ~~~javascript
-const double = x => x * 2 // environment is {x:2, ...}, ... represent other environment such as global one
-~~~
-
-#### Variable Types
-**Value Types** such as string, boolean, number, etc..
-**Reference Types** such as array, object and function
-
-
-#### Call By Value
-When a function is invoked, javascript evaluate the expression(s) (all values are expressions) and apply the result of it as value to function.
-This when the argument passed in is value type.
-~~~javascript
-(function double(x) { return x * 2 })(1 + 1) // 1 + 1 was evaluated first as value, then passed into function double as argument of value 2
-~~~
-
-#### Call By Sharing
-A specialization of call by value, instead of evaluate the expression to get the value, it actually make a copy of the reference and pass it into function. Since
-two references point to the same value, so they are identical. For instance, the way variable assignment works are exactly the same
-
-~~~javascript
-const x = [1, 2, 3]
-const y = x // true
-
-// how y is assigned is the same as
-function (value) {
-    return (function (copy) { // inner function always return true
-        return copy === value
-    })(value)
+function sum() {
+    return this.x + this.y;
 }
+var context = {
+    x: 1,
+    y: 2
+};
+sum.call(context);
 ~~~
+
+This code doesn’t fit with various principles of FP for a variety of reasons, but one
+of the obvious hitches is the implicit this sharing.
