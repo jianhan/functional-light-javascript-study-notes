@@ -47,6 +47,23 @@ and assign to the function parameter
 2. A function can return multiply values, (return values in array or object), and then destructuring 
 3. Early return: sometimes is good but by no means all the time, whatever is the most explicit way of writing the code is the more appropriate way
 
+### Higher Order Function
+* A function that either takes functions as arguments or returns a function (or both) is referred to as a “higher-order” function.
+* Foundational building block for FP
+
+#### Combinators
+Higher-order pure functions that take only functions as arguments and return a function.
+
+#### Function Decorator
+A function decorator is a higher-order function that takes one function as an argument, returns another function, and the returned function is a variation of the argument function
+
+#### Closure
+* What is it: Closure is when a function remembers and accesses variables from outside of its own scope, even when that function is executed in a different scope
+* How it works: when inner function reference a variable from outer scope, AKA have closure over outer scope variable, it will keep it alive for as lone as the inner function stay
+around, like a live link.
+* This behavior is what makes functional programming powerful, also is the foundation for how higher order function works.
+
+
 ### Function Environment
 
 **Function Environment**
