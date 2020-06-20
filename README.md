@@ -39,12 +39,15 @@ foo({y: 3});
 ~~~
 7. Strive for declarative, self-explanatory code
 8. Named arguments are much more flexible, and attractive from a readability perspective, especially when the function in question can take three, four, or more inputs.
+9. When a function accept an array, if using spread operator, it will prevent the original array be mutated, since it will spread each element individually within the array
+and assign to the function parameter
 
 ### Function Output
 1. Every function have output, no return = return = return undefined, they all return the value, undefined
 2. A function can return multiply values, (return values in array or object), and then destructuring 
+3. Early return: sometimes is good but by no means all the time, whatever is the most explicit way of writing the code is the more appropriate way
 
-#### Function Environment
+### Function Environment
 
 **Function Environment**
 
