@@ -16,6 +16,31 @@
 2. Every function has argument variable, this is meta data, array like
 3. Never access arguments positionally, like arguments[1] . Stick to arguments.length only, and only if you must.
 4. If you really want to design a function that can account for an arbitrary number of arguments to be passed in, use ...args, spread operator
+5. Avoid variadic function where possible, in FP, always prefer point free style, or one input one output.
+6. ... operator make the code more declarative when destructuring
+~~~javascript
+// name the first and second argument in array, the rest can be arbitrary
+// declarative style with ... destructuring
+function foo([x,y, ...args] = []) {
+    // ...
+}
+
+// imperative style
+function foo(params) {
+    var x = params[0];
+    var y = params[1];
+    var args = params.slice( 2 );
+// ..
+}
+
+function foo( {x,y} = {} ) {
+    console.log( x, y );
+}
+foo({y: 3});
+~~~
+7. Strive for declarative, self-explanatory code
+
+### Array of Arguments
 
 #### Function Environment
 
