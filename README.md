@@ -11,7 +11,6 @@
 * Argument  = an actual value passed into the function
 * Parameter = the variable that is in declaration of the function
 
-### Counting Input
 1. Arity = 1 (Unary), Arity = 2 (Binary), Arity >= 3 (N-ary)
 2. Every function has argument variable, this is meta data, array like
 3. Never access arguments positionally, like arguments[1] . Stick to arguments.length only, and only if you must.
@@ -39,8 +38,11 @@ function foo( {x,y} = {} ) {
 foo({y: 3});
 ~~~
 7. Strive for declarative, self-explanatory code
+8. Named arguments are much more flexible, and attractive from a readability perspective, especially when the function in question can take three, four, or more inputs.
 
-### Array of Arguments
+### Function Output
+1. Every function have output, no return = return = return undefined, they all return the value, undefined
+2. A function can return multiply values, (return values in array or object), and then destructuring 
 
 #### Function Environment
 
