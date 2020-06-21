@@ -67,3 +67,25 @@ function identity(v) {
 // or the ES6 => arrow form
 var identity = v => v;
 ~~~
+
+### Unchanging One
+**Constant Helper Function**
+A higher order function which convert a plain value into a function just return that plain value.
+
+Usage: when an external API required a function to be passed in, we can convert a value into a function. Like then method
+in promise
+~~~javascript
+function constant(v) {
+    return function value(){
+        return v;
+    };
+}
+// or the ES6 => form
+var constant = v => () => v;
+
+// constant version
+p1.then(foo).then(constant(p2)).then(bar);
+
+// regular version
+p1.then(foo).then(() => p2).then(bar);
+~~~
