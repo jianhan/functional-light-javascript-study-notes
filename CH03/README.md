@@ -146,3 +146,16 @@ function nothing (x) {
     return !something(x)
 }
 ~~~
+
+### Partial Application
+A partial application is a function which has been applied to some, but not yet all of its arguments.
+**Partial Helper**
+~~~javascript
+function partial(fn, ...presetArgs) {
+    return function partiallyApply(...laterArgs) {
+        return fn(...presetArgs, ...laterArgs)
+    }
+}
+// arrow function
+const partial = (fn, ...presetArgs) => (...laterArgs) => fn(...presetArgs, ...laterArgs)
+~~~
