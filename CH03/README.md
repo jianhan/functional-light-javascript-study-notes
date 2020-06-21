@@ -115,3 +115,34 @@ function gatherArgs(fn) {
     }
 }
 ~~~
+
+### Function Combinators
+Higher-order pure functions that take only functions as arguments and return a function
+
+For instance, compose or pipe
+~~~javascript
+const compose = (..funcs) => v => funcs.reduceRight((accumulator, current) => current(accumulator), v)
+const double = v => v * 2
+const increment = v => v + 1
+// take to functions, and return a new one
+const doubleThenIncrement = compose(increment,double)
+doubleThenIncrement(2) // 5
+~~~
+
+### Function Decorators
+A function decorator is a higher-order function that takes one function as an argument, returns another function, and the returned function is a variation of the argument function
+~~~javascript
+function not (fn) {
+    return function (argument) {
+        return !fn(argument)
+    }
+}
+
+function something (x) {
+    return x != null
+}
+
+function nothing (x) {
+    return !something(x)
+}
+~~~
