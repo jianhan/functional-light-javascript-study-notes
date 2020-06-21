@@ -89,3 +89,29 @@ p1.then(foo).then(constant(p2)).then(bar);
 // regular version
 p1.then(foo).then(() => p2).then(bar);
 ~~~
+
+### Adapting Arguments to Parameters
+**SpreadArgs Helper Function (apply in Rambda)**
+A higher order function accepts a N-ary function to a unary function. Another way of thinking it is to wrap a function with multiply parameters into accept
+
+one parameter which is an array.
+~~~javascript
+function spreadArgs(fn) {
+    return function(args) {
+        // this is where the higher order function spread arguments
+        return fn(...args)
+    }
+}
+// OR
+const spreadArgs = fn => args => fn(...args)
+~~~
+
+**GatherArgs Helper Function (unapply in ramda)**
+Opposite to the previous one, here we have a higher order function wrap a function that accept array and return a function accepts multiply args
+~~~javascript
+function gatherArgs(fn) {
+    return function(...args) {
+        return fn(args)
+    }
+}
+~~~
