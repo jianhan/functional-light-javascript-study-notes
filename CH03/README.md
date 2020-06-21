@@ -46,5 +46,24 @@ function (value) {
 
 ### All For One
 **Unary Helper**
-
 A higher order function act as a wrapper for exiting function to ensure only one parameter can be passed, which makes the target function's arity == 1
+~~~javascript
+const unary = fn => arg => fn(arg) // arrow function version
+
+function unary(fn) { // named function version
+    return function onlyOneARg(arg) {
+        return fn(arg)
+    }
+}
+~~~
+
+### One on One
+**Identity Helper Function**
+A unary function return whatever passed in, identity
+~~~javascript
+function identity(v) {
+    return v;
+}
+// or the ES6 => arrow form
+var identity = v => v;
+~~~
