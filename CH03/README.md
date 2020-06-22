@@ -168,8 +168,24 @@ A curried function is a function that takes multiple arguments one at a time.
 2. The purpose is different, curry will be used for most of the time for function composition, since composition required unary function, on the other hand, partial application
 mostly used for different level of abstraction or specialization.
 
-### Why Currying and Partial Application Are Important
+#### Why Currying and Partial Application Are Important
 1. both currying and partial application allow you to separate in time/space (throughout your codebase) when and where separate arguments are specified.
 2. Composition
 3. the most important layer is specialization of generalized functions, and how such abstraction improves readability of code.
 Whether you use currying or partial application, creating specialized functions from generalized ones is a powerful technique for semantic abstraction and improved readability.
+
+### Point Free Style
+Point-free style is a style of programming where function definitions do not make reference to the function’s arguments
+
+The key thing to look for is if you have a function with parameter(s) that is/are directly passed to an inner function call.
+~~~javascript
+const double = x => x * 2;
+
+// notice how the function signature for map and double is the same
+[1, 2, 3].map(x => double(x))
+
+// hence we can do it this way, -> point free
+[1, 2, 3].map(double)
+~~~
+
+If your code gets harder to understand because of the hoops you have to jump through to be point-free, stop.
