@@ -159,3 +159,17 @@ function partial(fn, ...presetArgs) {
 // arrow function
 const partial = (fn, ...presetArgs) => (...laterArgs) => fn(...presetArgs, ...laterArgs)
 ~~~
+
+### Curry
+A curried function is a function that takes multiple arguments one at a time.
+
+### Curry VS Partial Application
+1. All curried functions are partial application, not all partial applications are curried function
+2. The purpose is different, curry will be used for most of the time for function composition, since composition required unary function, on the other hand, partial application
+mostly used for different level of abstraction or specialization.
+
+### Why Currying and Partial Application Are Important
+1. both currying and partial application allow you to separate in time/space (throughout your codebase) when and where separate arguments are specified.
+2. Composition
+3. the most important layer is specialization of generalized functions, and how such abstraction improves readability of code.
+Whether you use currying or partial application, creating specialized functions from generalized ones is a powerful technique for semantic abstraction and improved readability.
