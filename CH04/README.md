@@ -32,3 +32,6 @@ Abstraction can appear in many forms, modules, classes, a cron job script, etc..
 * Independent
 * Concise
 * Simple
+
+### How Abstraction Works
+It allows a progression from generalized to specialized functions, we can abstract by pulling out the generality between two or more tasks. The general part is defined once, so as to avoid repetition. To perform each task’s specialization, the general part is parameterized.
