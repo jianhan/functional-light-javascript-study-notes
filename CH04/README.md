@@ -35,3 +35,33 @@ Abstraction can appear in many forms, modules, classes, a cron job script, etc..
 
 ### How Abstraction Works
 It allows a progression from generalized to specialized functions, we can abstract by pulling out the generality between two or more tasks. The general part is defined once, so as to avoid repetition. To perform each task’s specialization, the general part is parameterized.
+
+composition is helpful even if there’s only one occurrence of something
+
+### Separation Enables Focus
+Another definition of abstraction: abstraction is a process by which the programmer associates a name
+with a potentially complicated program fragment, which can then be
+thought of in terms of its purpose of function, rather than in terms of
+how that function is achieved. By hiding irrelevant details, abstraction
+reduces conceptual complexity, making it possible for the programmer
+to focus on a manageable subset of the program text at any particular time.
+
+**We’re not abstracting to hide details; we’re separating details to improve focus.**
+
+The function’s implementation is focused on how to compute something, and the call-site using that function by name is focused on what to do with its output. We abstract the how
+from the what so they are separate and separately reasonable.
+
+#### Declarative vs Imperative
+imperative vs. declarative programming style. Imperative code is primarily concerned with explicitly stating how to accomplish a task. Declarative code states what the outcome should be, and leaves the implementation to some other responsibility.
+
+#### Find the Balance
+Declarative code abstracts the what from the how. Typically declarative coding is
+favored in readability over imperative, though no program (except of course machine
+code 1s and 0s) is ever entirely one or the other. The programmer must seek balance
+between them.
+
+#### Destructuring
+Destructuring is a pattern for assignment that describes how a compound value (object, array) is taken apart into its constituent values.
+
+#### Composition as Abstraction
+Composition is a powerful tool for abstraction that transforms imperative code into more readable declarative code.
