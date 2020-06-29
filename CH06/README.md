@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-29 21:23:45
- * @LastEditTime: 2020-06-29 21:43:16
+ * @LastEditTime: 2020-06-29 22:36:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /functional-light-javascript-study-notes/CH06/README.md
@@ -35,3 +35,16 @@ Const just means not assignable, does NOT mean not immutable
 There’s a cheap and simple way to turn a mutable object/array/function into an “immutable value”
 1. It goes through all the properties/indices of an object/array and marks them as read-only, so they cannot be reassigned. (Declare properties with const)
 2. Top level only
+
+### Performance
+1. If we have to reallocate a new array each time we need to add to it, that’s not only churning CPU time and consuming extra memory
+2. The old values (if no longer referenced) are also being garbage collected. That’s even more CPU burn
+**It depend on the situation to apply immutability**
+3. Key takeaway, use existing library which has performance optimized already, such as Immutable.js
+
+### Treatment
+1. Treat all received values as immutable to avoid side effects and remain pure – regardless of whether they are or not
+2. Built in methods which does not mutate original value: map, filter, reduce, reduceRight
+3. Built in methods does mutate: splice, pop, push, shift, unshift, reverse, sort and fill - not forbidden but use with care
+4. But never use such a method on an array value that is not already local to the function you’re working in, to avoid creating a side effect on some other remote part of the code.
+5. Key takeaway: Be disciplined and always treat received values as immutable, whether they are or not. That effort will improve the readability and trustability of your code.
