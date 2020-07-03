@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-06-30 19:07:19
- * @LastEditTime: 2020-07-02 19:24:39
+ * @LastEditTime: 2020-07-03 19:41:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /functional-light-javascript-study-notes/CH07/README.md
@@ -101,3 +101,10 @@ var p = Object.assign( {}, o );
 p.y = 3;
 ~~~
 4. Objects have a clear advantage when it comes to representing state that we need to be able to clone.
+
+### Performance
+1. From an implementation perspective, is that in JavaScript objects are often lighter-weight in terms of memory and even computation.
+
+### Summary
+1. Representation as a closure has certain benefits, like granular change control and automatic privacy
+2. Representation as an object has other benefits, like easier cloning of state.
