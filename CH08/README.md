@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-03 19:43:22
- * @LastEditTime: 2020-07-03 19:52:47
+ * @LastEditTime: 2020-07-04 22:04:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /functional-light-javascript-study-notes/CH08/README.md
@@ -43,4 +43,17 @@ function isEven(v) {
 ~~~
 
 ### Why Recursion
+1. Recursion is most useful when the problem requires conditional branching and back-tracking, and managing that kind of state in a purely iterative environment can be quite tricky
+2. Tracking each level of branching as its own scope on the call stack often significantly cleans up the readability of the code.
+3. FPers will often prefer to avoid reassignment of local variables where it’s possible to avoid
 
+### Declarative Recursion
+1. When we can make the recursive definition more apparent even in the function signature, we improve the declarativeness of the function
+~~~javascript
+function maxEven(num1,...restNums) {
+    var maxRest = restNums.length > 0 ?
+        maxEven( ...restNums ) :
+        undefined;
+    return (num1 % 2 != 0 || num1 < maxRest) ? maxRest : num1;
+}
+~~~
