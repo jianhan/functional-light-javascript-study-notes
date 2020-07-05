@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-03 19:43:22
- * @LastEditTime: 2020-07-04 22:16:17
+ * @LastEditTime: 2020-07-05 21:28:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /functional-light-javascript-study-notes/CH08/README.md
@@ -88,3 +88,25 @@ return 1 + foo( .. );
 4. Binary (or multiple) recursion – as shown earlier, two (or more!) recursive calls made at each level – can never be fully PTC as-is, because only one recursive call can appear
 in PTC position.
 
+### CPS
+1. Organizing code so that each function receives another function to execute at its end is referred to as Continuation Passing Style (CPS)
+2. In JavaScript, you’d likely need to write the CPS form yourself. It’s clunkier, for sure; the declarative notation-like form has certainly been obscured. But overall, this form
+is still more declarative than the for-loop imperative implementation.
+
+### Trampolines
+1. In this style of code, CPS-like continuations are created, but instead of passed in, they are shallowly returned
+2. Instead of functions calling functions, the stack never goes beyond depth of one, because each function just returns the next function that should be called. A loop
+simply keeps running each returned function until there are no more functions to run.
+~~~javascript
+function trampoline(fn) {
+    return function trampolined(...args) {
+        var result = fn( ...args );
+        while (typeof result == "function") {
+            result = result();
+        }
+        return result;
+    };
+}
+~~~
+3. As long as a function is returned, the loop keeps going, executing that function and capturing its return, then checking its type. Once a non-function comes back, the
+trampoline assumes the function calling is complete, and just gives back the value.
