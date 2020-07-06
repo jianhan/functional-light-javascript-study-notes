@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-03 19:43:22
- * @LastEditTime: 2020-07-05 21:28:09
+ * @LastEditTime: 2020-07-06 20:33:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /functional-light-javascript-study-notes/CH08/README.md
@@ -110,3 +110,11 @@ function trampoline(fn) {
 ~~~
 3. As long as a function is returned, the loop keeps going, executing that function and capturing its return, then checking its type. Once a non-function comes back, the
 trampoline assumes the function calling is complete, and just gives back the value.
+
+### Summary
+1. Direct recursion is a function that makes at least one call to itself, and it keeps dispatching to itself until it satisfies a base condition
+2. Multiple recursion (like binary recursion) is when a function calls itself multiple times
+3. Mutual recursion is when two or more functions recursively loop by mutually calling each other
+4. The upside of recursion is that it’s more declarative and thus typically more readable.
+5. The downside is usually performance, but more memory constraints even than execution speed.
+6. recursion should be used to make code more readable. If you misuse or abuse recursion, the readability will end up worse than the imperative form
