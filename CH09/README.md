@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-07 21:01:03
- * @LastEditTime: 2020-07-08 20:07:35
+ * @LastEditTime: 2020-07-09 17:32:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /functional-light-javascript-study-notes/CH09/README.md
@@ -99,3 +99,24 @@ Using filterIn(..) and filterOut(..) (known as reject(..) in Ramda) will make yo
 ~~~javascript
 const compose = (...funcs) => v => funcs.reduceRight((accumulator, currentFunc) => currentFunc(accumulator), v)
 ~~~
+
+### Unique
+Remove duplication from list of values
+
+### Flatten
+1. Function to convert array of array of array, etc... into on single array without any nesting
+
+### Mapping, Then Flattening
+1. One of the most common usages of flatten(..) behavior is when you’ve mapped a list of elements where each transformed value from the original list is now itself a list of values
+2. FP libraries typically define a flatMap(..) (often also called chain(..)) that does the mapping-then-flattening combined
+
+### Zip
+1. operation alternates selection of values from each of two input lists into sub-lists, called zip(..)
+~~~javascript
+zip( [1,3,5,7,9], [2,4,6,8,10] );
+// [ [1,2], [3,4], [5,6], [7,8], [9,10] ]
+~~~
+2. If the two lists are of different lengths, the selection of values will continue until the shorter list has been exhausted, with the extra values in the other list ignored.
+
+### Merge
+1. Merging two lists by interleaving values from each source
