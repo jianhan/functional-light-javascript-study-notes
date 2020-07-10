@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-07-07 21:01:03
- * @LastEditTime: 2020-07-09 17:32:09
+ * @LastEditTime: 2020-07-09 18:52:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /functional-light-javascript-study-notes/CH09/README.md
@@ -120,3 +120,12 @@ zip( [1,3,5,7,9], [2,4,6,8,10] );
 
 ### Merge
 1. Merging two lists by interleaving values from each source
+
+### Fusion
+1. Fusion deals with combining adjacent operators to reduce the number of times the list is iterated over.
+~~~javascript
+sampleList.map(func1).map(func2).map(func3)
+// is the same as 
+sampleList.map(compose(func3, func2, func1))
+~~~
+2. With fusion we only loop once instead of 3 times
